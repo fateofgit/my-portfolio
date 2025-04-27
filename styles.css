@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #ebf8ff, #ffffff);
+  color: #1a202c;
+}
+
+.main-container {
+  min-height: 100vh;
+  padding: 2.5rem 1.5rem;
+}
+
+.content-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #3182ce;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #4a5568;
+}
+
+.description {
+  font-size: 1rem;
+  color: #718096;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: #fff;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #3182ce;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.project-title.gold { color: #BFA161; }
+.project-title.navy { color: #000080; }
+
+ul {
+  padding-left: 1.5rem;
+  line-height: 1.75;
+  color: #4a5568;
+}
+
+li.highlight { color: #38a169; }
+
+.details { margin-top: 0.5rem; }
+.hidden { display: none; }
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 9999px;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+.btn.gold { background-color: #BFA161; }
+.btn.navy { background-color: #000080; }
+.btn.blue { background-color: #3182ce; }
+.btn.linkedin { background-color: #0077B5; display: inline-flex; align-items: center; }
+
+.center { text-align: center; }
