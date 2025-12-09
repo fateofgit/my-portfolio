@@ -1,123 +1,1434 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Munish Pakshirajan Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Munish Pakshirajan | Portfolio</title>
+    <style>
+        :root {
+            --color-primary: #2180D0;
+            --color-secondary: #3d8e42;
+            --color-accent: #f39c12;
+            --color-bg: #0f1419;
+            --color-surface: #1a1f2e;
+            --color-text: #e8eaed;
+            --color-text-secondary: #b0b3b8;
+            --color-border: #2a3240;
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.2);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 100px;
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, rgba(33, 128, 208, 0.1) 0%, rgba(61, 142, 66, 0.1) 100%);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0f2437;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(33, 128, 208, 0.1);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--color-text);
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            background: var(--color-surface);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            border-color: var(--color-primary);
+            transform: translateX(5px);
+        }
+
+        .skill-item strong {
+            color: var(--color-primary);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--color-surface);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, rgba(33, 128, 208, 0.2), rgba(61, 142, 66, 0.2));
+            padding: 2rem;
+        }
+
+        .project-header h3 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-body {
+            padding: 2rem;
+            flex-grow: 1;
+        }
+
+        .project-body p {
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-highlights {
+            list-style: none;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .project-highlights li {
+            color: var(--color-text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .project-highlights li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+        }
+
+        .project-footer {
+            padding: 0 2rem 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-tag {
+            background: rgba(33, 128, 208, 0.15);
+            color: var(--color-primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Certifications */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: var(--color-surface);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            border-color: var(--color-secondary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .cert-card h4 {
+            color: var(--color-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .cert-card p {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Campaigns Section */
+        .campaign-card {
+            background: var(--color-surface);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            transition: all 0.3s ease;
+        }
+
+        .campaign-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .campaign-header {
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.2), rgba(231, 76, 60, 0.2));
+            padding: 1.5rem;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .campaign-header h3 {
+            color: var(--color-accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .campaign-body {
+            padding: 1.5rem;
+        }
+
+        .campaign-body p {
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .campaign-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .metric {
+            background: rgba(243, 156, 18, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--color-accent);
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        .metric-label {
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: var(--color-surface);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-surface);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--color-border);
+            color: var(--color-text-secondary);
+        }
+
+        footer a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .certs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 2rem 0;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Active nav styling */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: var(--color-surface);
+            margin: 5% auto;
+            padding: 2rem;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            color: var(--color-text-secondary);
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: var(--color-primary);
+        }
+
+        .modal-title {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .modal-body {
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+        }
+
+        .modal-body strong {
+            color: var(--color-text);
+        }
+
+        .btn-view {
+            background: var(--color-secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            margin-left: auto;
+        }
+
+        .btn-view:hover {
+            background: #2d7032;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-footer {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .cert-card {
+            position: relative;
+        }
+
+        .cert-card:hover {
+            cursor: pointer;
+            background: rgba(61, 142, 66, 0.1);
+        }
+
+        .file-preview {
+            max-height: 400px;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .file-preview img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .file-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .file-download:hover {
+            background: #1a5fa0;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body>
-  <main class="main-container">
-    <div class="content-wrapper">
-      <header class="header">
-        <h1>Munish Pakshirajan</h1>
-        <p class="subtitle">Aspiring Marketing Professional | Strategist | Storyteller</p>
-        <p class="description">Passionate about marketing that blends creativity, data, and strategy. I believe in transforming ideas into impactful business results.</p>
-      </header>
-
-      <section class="card">
-        <h2>Experience</h2>
-        <ul id="experience-list">
-          <li class="highlight"> <strong>Finance Intern</strong>, Redington Ltd, Chennai — May 2024 to July 2024</li>
-          <div id="intern-details" class="details hidden">
-            <ul>
-              <li>Handled documentation of car loan papers</li>
-              <li>Worked on Analyzing and rectifying discrepancies in balance sheets of Redington India and its consolidated entities</li>
-              <li>Conducted data entry and maintenance for journal records using Finalizer</li>
-              <li>Integrated Redington's asset information into SAP system</li>
-            </ul>
-          </div>
-          <li> <strong>Project Intern</strong>, Anil Sharma A and Associates, Chennai — Feb 2022</li>
-          <div id="project-details" class="details hidden">
-            <ul>
-              <li>Executed the Bank Projections project to forecast company's five-year outlook</li>
-              <li>Streamlined data manipulation processes in Excel by creating custom macros and automated reports that cut down manual processing time</li>
-              <li>Developed visual presentations using provided information</li>
-            </ul>
-          </div>
+    <!-- Navigation -->
+    <nav>
+        <a href="#home" class="logo">MP</a>
+        <ul>
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#career" class="nav-link">Experience</a></li>
+            <li><a href="#campaigns" class="nav-link">Campaigns</a></li>
+            <li><a href="#certificates" class="nav-link">Certificates</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
-        <button onclick="toggleDetails()" id="toggle-experience" class="btn blue">View Details</button>
-      </section>
+    </nav>
 
-      <section class="card">
-        <h2>Portfolio Projects</h2>
-        <div>
-          <h3 class="project-title gold">3-Statement Financial Model – Reliance Industries</h3>
-          <p>A dynamic 3-statement Excel model with scenario/sensitivity analyses, revenue forecasts, and key financial ratios. Designed to provide actionable marketing insights.</p>
-          <ul>
-            <li><strong>Scenario Analysis:</strong> Simulated multiple economic scenarios.</li>
-            <li><strong>Sensitivity Testing:</strong> Impact of key variables on financials.</li>
-            <li><strong>Revenue Forecast:</strong> Projected growth using CAGR assumptions.</li>
-            <li><strong>Integrated Statements:</strong> Linked P&L, Balance Sheet, Cash Flow.</li>
-            <li><strong>Ratio Insights:</strong> Analyzed ROE, ROCE, Margin trends.</li>
-          </ul>
-          <a href="/files/1744777493145.pdf" download class="btn gold">Download Excel</a>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Munish Pakshirajan</h1>
+            <p>Finance Analyst | Digital Marketer | Business Strategist</p>
+            <p style="font-size: 1rem; margin-top: 1rem;">Commerce graduate from Shiv Nadar University with expertise in financial modeling, digital marketing, and brand strategy. Passionate about leveraging data-driven insights to drive business growth.</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
         </div>
+    </section>
 
-        <div>
-          <h3 class="project-title navy">Anand Agency Term Loan Projection</h3>
-          <p>A comprehensive term loan projection for Anand Agency, evaluating feasibility and financial sustainability over time.</p>
-          <ul>
-            <li>Loan amortization table with monthly EMIs.</li>
-            <li>Cash flow forecast to assess debt servicing capability.</li>
-            <li>Sensitivity analysis based on interest rate changes.</li>
-            <li>Projection aligned with bank term loan submission format.</li>
-          </ul>
-          <a href="/files/Projections (Term Loan) - Anand Agency.xlsx" download class="btn navy">Download Excel</a>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 style="margin-bottom: 1rem;">About Me</h2>
+            <p style="text-align: center; color: var(--color-text-secondary); margin-bottom: 3rem; font-size: 1.05rem;">Commerce graduate with expertise in financial modeling, digital strategy, and business growth—where data meets creativity</p>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3 style="color: var(--color-primary); font-size: 1.8rem; margin-bottom: 1.5rem;">Professional Profile</h3>
+                    <p style="font-size: 1rem; line-height: 1.8; color: var(--color-text); margin-bottom: 1.5rem;"><strong>Shiv Nadar University | Commerce Graduate</strong></p>
+                    <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 1.5rem;">Results-driven finance analyst and digital strategist with proven expertise in financial modeling, strategic marketing, and business development. Currently contributing to revenue generation and brand strategy at Reflections as Management Trainee. Demonstrated ability to translate complex financial data into actionable business insights while driving digital marketing initiatives that deliver measurable results.</p>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(33, 128, 208, 0.08) 0%, rgba(61, 142, 66, 0.08) 100%); padding: 1.5rem; border-left: 4px solid var(--color-primary); border-radius: 8px; margin: 2rem 0;">
+                        <p style="margin: 0 0 1rem 0; color: var(--color-text); font-weight: 700; font-size: 1.05rem;">Key Strengths:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div style="padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <p style="margin: 0; color: var(--color-text); font-size: 0.9rem; font-weight: 600;">Financial Analysis & Modeling</p>
+                                <p style="margin: 0.3rem 0 0 0; color: var(--color-text-secondary); font-size: 0.85rem;">DCF, scenario analysis, valuations</p>
+                            </div>
+                            <div style="padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <p style="margin: 0; color: var(--color-text); font-size: 0.9rem; font-weight: 600;">Digital Strategy & Marketing</p>
+                                <p style="margin: 0.3rem 0 0 0; color: var(--color-text-secondary); font-size: 0.85rem;">GA4, campaigns, social media</p>
+                            </div>
+                            <div style="padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <p style="margin: 0; color: var(--color-text); font-size: 0.9rem; font-weight: 600;">Business Development</p>
+                                <p style="margin: 0.3rem 0 0 0; color: var(--color-text-secondary); font-size: 0.85rem;">Sales, negotiations, strategy</p>
+                            </div>
+                            <div style="padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <p style="margin: 0; color: var(--color-text); font-size: 0.9rem; font-weight: 600;">Creative Problem-Solving</p>
+                                <p style="margin: 0.3rem 0 0 0; color: var(--color-text-secondary); font-size: 0.85rem;">Innovation, AI tools, automation</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.7;">Specialized in bridging quantitative analysis with strategic marketing initiatives. Track record includes developing sophisticated financial models (Reliance Industries 3-statement modeling, scenario analysis) and executing data-driven campaigns that deliver ROI. Equipped with emerging skills in AI-powered automation and modern business analytics.</p>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 2rem;">Core Competencies</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <strong>Financial Analysis</strong>
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.5rem;">DCF, DDM, Valuation Models</p>
+                        </div>
+                        <div class="skill-item">
+                            <strong>Excel Mastery</strong>
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.5rem;">Advanced formulas, Macros, Automation</p>
+                        </div>
+                        <div class="skill-item">
+                            <strong>Digital Marketing</strong>
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.5rem;">GA4, Social Media, Campaign Strategy</p>
+                        </div>
+                        <div class="skill-item">
+                            <strong>Business Strategy</strong>
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.5rem;">Product Development, Market Analysis</p>
+                        </div>
+                        <div class="skill-item">
+                            <strong>Sales & Negotiation</strong>
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.5rem;">Lead Conversion, Client Relations</p>
+                        </div>
+                        <div class="skill-item">
+                            <strong>Critical Thinking</strong>
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.5rem;">Problem Solving, Data Analysis</p>
+                        </div>
+                        <div class="skill-item">
+                            <strong>AI & Automation</strong>
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.5rem;">Prompt Engineering, AI Tools Integration</p>
+                        </div>
+                        <div class="skill-item">
+                            <strong>Creative Design</strong>
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.5rem;">Visual Storytelling, UI/UX Thinking</p>
+                        </div>
+                        <div class="skill-item">
+                            <strong>Content Creation</strong>
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.5rem;">Copywriting, Brand Messaging</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">Professional Internships</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Certified Skills</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Successful Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Chennai</div>
+                    <div class="stat-label">Based In</div>
+                </div>
+            </div>
+
+            <!-- Core Competencies Section -->
+            <div style="margin-top: 4rem; padding: 2rem; background: linear-gradient(135deg, rgba(33, 128, 208, 0.05) 0%, rgba(61, 142, 66, 0.05) 100%); border-radius: 12px; border: 1px solid var(--color-border);">
+                <h3 style="text-align: center; color: var(--color-primary); margin-bottom: 2rem; font-size: 1.6rem;">Professional Capabilities</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                    <div style="padding: 1.5rem; background: rgba(33, 128, 208, 0.05); border: 1px solid var(--color-border); border-radius: 8px;">
+                        <div style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--color-primary);">📊</div>
+                        <h4 style="color: var(--color-text); margin-bottom: 0.3rem; font-size: 0.95rem;">Financial Analysis</h4>
+                        <p style="color: var(--color-text-secondary); font-size: 0.85rem; margin: 0; line-height: 1.6;">3-statement modeling, DCF valuation, scenario analysis, financial forecasting</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(33, 128, 208, 0.05); border: 1px solid var(--color-border); border-radius: 8px;">
+                        <div style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--color-primary);">📈</div>
+                        <h4 style="color: var(--color-text); margin-bottom: 0.3rem; font-size: 0.95rem;">Digital Marketing</h4>
+                        <p style="color: var(--color-text-secondary); font-size: 0.85rem; margin: 0; line-height: 1.6;">GA4, campaign strategy, social media management, content creation</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(33, 128, 208, 0.05); border: 1px solid var(--color-border); border-radius: 8px;">
+                        <div style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--color-primary);">💼</div>
+                        <h4 style="color: var(--color-text); margin-bottom: 0.3rem; font-size: 0.95rem;">Sales & Business Dev</h4>
+                        <p style="color: var(--color-text-secondary); font-size: 0.85rem; margin: 0; line-height: 1.6;">Lead generation, client relations, negotiation, relationship management</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(33, 128, 208, 0.05); border: 1px solid var(--color-border); border-radius: 8px;">
+                        <div style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--color-primary);">🛠️</div>
+                        <h4 style="color: var(--color-text); margin-bottom: 0.3rem; font-size: 0.95rem;">Technical Skills</h4>
+                        <p style="color: var(--color-text-secondary); font-size: 0.85rem; margin: 0; line-height: 1.6;">Excel (advanced), VBA, SAP, Tally, AI tools, automation</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(33, 128, 208, 0.05); border: 1px solid var(--color-border); border-radius: 8px;">
+                        <div style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--color-primary);">🎯</div>
+                        <h4 style="color: var(--color-text); margin-bottom: 0.3rem; font-size: 0.95rem;">Strategic Thinking</h4>
+                        <p style="color: var(--color-text-secondary); font-size: 0.85rem; margin: 0; line-height: 1.6;">Market analysis, business strategy, problem-solving, innovation</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(33, 128, 208, 0.05); border: 1px solid var(--color-border); border-radius: 8px;">
+                        <div style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--color-primary);">✨</div>
+                        <h4 style="color: var(--color-text); margin-bottom: 0.3rem; font-size: 0.95rem;">Creative Execution</h4>
+                        <p style="color: var(--color-text-secondary); font-size: 0.85rem; margin: 0; line-height: 1.6;">Campaign design, copywriting, data storytelling, brand messaging</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </section>
+    </section>
 
-      <section class="card">
-        <h2>Certifications</h2>
-        <ul>
-          <li>
-            Certified in Tally Essentials
-            <div><a href="/files/tally-essentials-certificate.pdf" download class="btn blue">Download Certificate</a></div>
-          </li>
-          <li>
-            Company Valuation: DCF, DDM, Relative Valuation
-            <div><a href="/files/company-valuation-certificate.pdf" download class="btn blue">Download Certificate</a></div>
-          </li>
-          <li>
-            Google Analytics 4 (GA4) Essential Training
-            <div><a href="/files/company-valuation-certificate.pdf" download class="btn blue">Download Certificate</a></div>
-          </li>
-        </ul>
-      </section>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Reliance Industries Financial Model</h3>
+                        <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin: 0;">Advanced 3-Statement Financial Model</p>
+                    </div>
+                    <div class="project-body">
+                        <p>A dynamic, comprehensive Excel model featuring integrated P&L, Balance Sheet, and Cash Flow statements with advanced analytical capabilities.</p>
+                        <ul class="project-highlights">
+                            <li>Scenario Analysis: Multiple economic scenarios simulation</li>
+                            <li>Sensitivity Testing: Key variable impact analysis</li>
+                            <li>Revenue Forecast: CAGR-based growth projections</li>
+                            <li>Ratio Insights: ROE, ROCE, and Margin analysis</li>
+                        </ul>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-tag">Excel</span>
+                        <span class="project-tag">Financial Modeling</span>
+                        <span class="project-tag">Analysis</span>
+                        <button class="btn-view" onclick="openModal('reliance-modal')">View Project</button>
+                    </div>
+                </div>
 
-      <section class="card">
-        <h2>Skills</h2>
-        <ul>
-          <li>Excel & Data Analysis</li>
-          <li>Digital Marketing</li>
-          <li>Strategic Negotiation</li>
-          <li>Product Development</li>
-          <li>Creative Problem-Solving</li>
-        </ul>
-      </section>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Anand Agency - Term Loan Projection</h3>
+                        <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin: 0;">Business Feasibility & Cash Flow Analysis</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Comprehensive term loan projection evaluating financial sustainability and debt servicing capability over time.</p>
+                        <ul class="project-highlights">
+                            <li>Loan amortization with monthly EMI calculations</li>
+                            <li>Cash flow forecasts for debt servicing assessment</li>
+                            <li>Sensitivity analysis based on interest rate variations</li>
+                            <li>Bank-submission ready financial projections</li>
+                        </ul>
+                    </div>
+                    <div class="project-footer">
+                        <span class="project-tag">Finance</span>
+                        <span class="project-tag">Projections</span>
+                        <span class="project-tag">Excel</span>
+                        <button class="btn-view" onclick="openModal('anand-modal')">View Project</button>
+                    </div>
+                </div>
 
-      <section class="card">
-        <h2>Accomplishments</h2>
-        <ul>
-          <li>Finalist in international table topic contest (Gavel-u-tion 2019)</li>
-          <li>Scout Governor’s Award recipient</li>
-          <li>Led multiple university event teams including PR and organizing committees</li>
-        </ul>
-      </section>
+            </div>
+        </div>
+    </section>
 
-      <div class="card center">
-        <h2>Let's Connect</h2>
-        <p>I'm open to internships, marketing projects, and collaborations. Let’s work together and create something amazing!</p>
-        <a href="mailto:munishpakshirajan@gmail.com" class="btn blue">Mail ID</a>
-        
-        <a href="https://www.linkedin.com/in/munish-pakshirajan-179406241" target="_blank" rel="noopener noreferrer" class="btn blue">  
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M0 1.146C0 .513.324 0 .725 0h14.55c.4 0 .725.513.725 1.146v13.708c0 .633-.325 1.146-.725 1.146H.725A.723.723 0 0 1 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.71-.521-1.247-1.342-1.247-.82 0-1.358.537-1.358 1.247 0 .694.52 1.248 1.327 1.248h.015zm4.908 8.212V9.359c0-.215.016-.43.08-.584.175-.43.573-.877 1.24-.877.874 0 1.223.662 1.223 1.634v3.862h2.401V9.273c0-2.223-1.184-3.256-2.764-3.256-1.274 0-1.845.7-2.165 1.19h.03v-1.024H6.542c.03.662 0 7.225 0 7.225h2.401z"/>
-            </svg><span> View LinkedIn Profile</span></a>
-      </div>
-    </div>
-  </main>
+    <!-- Career Section -->
+    <section id="career">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <!-- Current Role -->
+                <div style="background: var(--color-surface); border-radius: 12px; border-left: 4px solid var(--color-primary); padding: 2rem; margin-bottom: 2rem; transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                        <div>
+                            <h3 style="color: var(--color-primary); margin-bottom: 0.25rem;">Management Trainee</h3>
+                            <p style="color: var(--color-accent); font-weight: 600; font-size: 1rem; margin: 0;">Reflections, Chennai</p>
+                        </div>
+                        <span style="background: var(--color-primary); color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem; font-weight: 500;">Current Role</span>
+                    </div>
+                    <p style="color: var(--color-text-secondary); font-size: 0.95rem; margin: 0.5rem 0;">June 2025 - Present</p>
+                    <ul style="list-style: none; margin: 1.5rem 0; padding: 0;">
+                        <li style="color: var(--color-text-secondary); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-secondary);">✓</span>
+                            Handled direct customer interactions to identify needs, present tailored solutions, convert leads, and build strong client relationships
+                        </li>
+                        <li style="color: var(--color-text-secondary); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-secondary);">✓</span>
+                            Maintained sales records and prepared performance reports in Excel, ensuring accurate documentation of customer interactions
+                        </li>
+                        <li style="color: var(--color-text-secondary); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-secondary);">✓</span>
+                            Coordinated with internal teams to ensure timely service delivery and smooth handoffs while supporting marketing tasks
+                        </li>
+                        <li style="color: var(--color-text-secondary); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-secondary);">✓</span>
+                            Managed Reflections' social media accounts: created content, engaged with audience, and supported campaign execution
+                        </li>
+                    </ul>
+                    <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                        <span style="background: rgba(33, 128, 208, 0.15); color: var(--color-primary); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Sales</span>
+                        <span style="background: rgba(33, 128, 208, 0.15); color: var(--color-primary); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Customer Relations</span>
+                        <span style="background: rgba(33, 128, 208, 0.15); color: var(--color-primary); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Social Media</span>
+                        <span style="background: rgba(33, 128, 208, 0.15); color: var(--color-primary); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Lead Generation</span>
+                    </div>
+                </div>
 
-  <script src="script.js"></script>
+                <!-- Internship 1 -->
+                <div style="background: var(--color-surface); border-radius: 12px; border-left: 4px solid var(--color-secondary); padding: 2rem; margin-bottom: 2rem; transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                        <div>
+                            <h3 style="color: var(--color-secondary); margin-bottom: 0.25rem;">Finance Intern</h3>
+                            <p style="color: var(--color-accent); font-weight: 600; font-size: 1rem; margin: 0;">Redington Ltd, Chennai</p>
+                        </div>
+                        <span style="background: var(--color-secondary); color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem; font-weight: 500;">Internship</span>
+                    </div>
+                    <p style="color: var(--color-text-secondary); font-size: 0.95rem; margin: 0.5rem 0;">May 2024 - July 2024 (3 months)</p>
+                    <ul style="list-style: none; margin: 1.5rem 0; padding: 0;">
+                        <li style="color: var(--color-text-secondary); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-secondary);">✓</span>
+                            Handled documentation of car loan papers and managed financial records
+                        </li>
+                        <li style="color: var(--color-text-secondary); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-secondary);">✓</span>
+                            Analyzed and rectified discrepancies in balance sheets of Redington India and consolidated entities
+                        </li>
+                        <li style="color: var(--color-text-secondary); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-secondary);">✓</span>
+                            Conducted data entry and maintenance for journal records using Finalizer accounting software
+                        </li>
+                        <li style="color: var(--color-text-secondary); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-secondary);">✓</span>
+                            Integrated Redington's asset information into SAP system for consolidated reporting
+                        </li>
+                    </ul>
+                    <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                        <span style="background: rgba(61, 142, 66, 0.15); color: var(--color-secondary); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Finance</span>
+                        <span style="background: rgba(61, 142, 66, 0.15); color: var(--color-secondary); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Accounting</span>
+                        <span style="background: rgba(61, 142, 66, 0.15); color: var(--color-secondary); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">SAP</span>
+                        <span style="background: rgba(61, 142, 66, 0.15); color: var(--color-secondary); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Data Entry</span>
+                    </div>
+                </div>
+
+                <!-- Internship 2 -->
+                <div style="background: var(--color-surface); border-radius: 12px; border-left: 4px solid var(--color-secondary); padding: 2rem; transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                        <div>
+                            <h3 style="color: var(--color-secondary); margin-bottom: 0.25rem;">Project Intern</h3>
+                            <p style="color: var(--color-accent); font-weight: 600; font-size: 1rem; margin: 0;">Anil Sharma A and Associates, Chennai</p>
+                        </div>
+                        <span style="background: var(--color-secondary); color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem; font-weight: 500;">Internship</span>
+                    </div>
+                    <p style="color: var(--color-text-secondary); font-size: 0.95rem; margin: 0.5rem 0;">February 2022</p>
+                    <ul style="list-style: none; margin: 1.5rem 0; padding: 0;">
+                        <li style="color: var(--color-text-secondary); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-secondary);">✓</span>
+                            Executed the Bank Projections project to forecast company's five-year financial outlook
+                        </li>
+                        <li style="color: var(--color-text-secondary); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-secondary);">✓</span>
+                            Streamlined data manipulation processes in Excel by creating custom macros and automated reports
+                        </li>
+                        <li style="color: var(--color-text-secondary); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-secondary);">✓</span>
+                            Developed visual presentations and professional reports using provided financial information
+                        </li>
+                    </ul>
+                    <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                        <span style="background: rgba(61, 142, 66, 0.15); color: var(--color-secondary); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Excel</span>
+                        <span style="background: rgba(61, 142, 66, 0.15); color: var(--color-secondary); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Financial Modeling</span>
+                        <span style="background: rgba(61, 142, 66, 0.15); color: var(--color-secondary); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Automation</span>
+                        <span style="background: rgba(61, 142, 66, 0.15); color: var(--color-secondary); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Reporting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campaigns Section -->
+    <section id="campaigns">
+        <div class="container">
+            <h2>Mock Brand Campaigns</h2>
+            <p style="text-align: center; color: var(--color-text-secondary); margin-bottom: 3rem;">Strategic marketing campaigns for Indian consumer brands, showcasing digital marketing expertise and consumer insights.</p>
+            
+            <div class="projects-grid">
+                <!-- Campaign 1 -->
+                <div class="campaign-card">
+                    <div class="campaign-header">
+                        <h3>Premium Smartphone Launch Campaign</h3>
+                        <p style="color: var(--color-text-secondary); font-size: 0.85rem; margin: 0;">Target: Tech-Savvy Urban Millennials</p>
+                    </div>
+                    <div class="campaign-body">
+                        <p><strong>Campaign Goal:</strong> Drive product awareness and pre-orders for a new flagship smartphone in India's metropolitan markets.</p>
+                        <p><strong>Strategy:</strong> Multi-channel approach combining Instagram influencer partnerships, YouTube tech reviews, and targeted Facebook ads focusing on camera capabilities and performance.</p>
+                        <div class="campaign-metrics">
+                            <div class="metric">
+                                <div class="metric-value">2.5M</div>
+                                <div class="metric-label">Impressions</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">8.5%</div>
+                                <div class="metric-label">Click Rate</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">3.2%</div>
+                                <div class="metric-label">Conversion</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">₹45L</div>
+                                <div class="metric-label">Pre-orders Value</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campaign 2 -->
+                <div class="campaign-card">
+                    <div class="campaign-header">
+                        <h3>Budget Fashion Brand Awareness</h3>
+                        <p style="color: var(--color-text-secondary); font-size: 0.85rem; margin: 0;">Target: Value-Conscious Tier II Cities</p>
+                    </div>
+                    <div class="campaign-body">
+                        <p><strong>Campaign Goal:</strong> Establish market presence and drive store traffic for an affordable fashion e-commerce platform.</p>
+                        <p><strong>Strategy:</strong> TikTok and Instagram Reels featuring trending styles, Pinterest boards for fashion inspiration, and localized Facebook ads in Tier II cities with emphasis on affordability and quality.</p>
+                        <div class="campaign-metrics">
+                            <div class="metric">
+                                <div class="metric-value">5.2M</div>
+                                <div class="metric-label">Impressions</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">12%</div>
+                                <div class="metric-label">Engagement Rate</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">42K</div>
+                                <div class="metric-label">New Followers</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">24%</div>
+                                <div class="metric-label">Cart Conversion</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campaign 3 -->
+                <div class="campaign-card">
+                    <div class="campaign-header">
+                        <h3>FMCG Health Drink Campaign</h3>
+                        <p style="color: var(--color-text-secondary); font-size: 0.85rem; margin: 0;">Target: Health-Conscious Parents & Fitness Enthusiasts</p>
+                    </div>
+                    <div class="campaign-body">
+                        <p><strong>Campaign Goal:</strong> Position premium health drink as essential for family nutrition and fitness.</p>
+                        <p><strong>Strategy:</strong> YouTube health influencer partnerships, Instagram fitness community engagement, Google Shopping ads, and programmatic display targeting parents aged 30-45 and gym-goers interested in nutrition.</p>
+                        <div class="campaign-metrics">
+                            <div class="metric">
+                                <div class="metric-value">8.1M</div>
+                                <div class="metric-label">Impressions</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">6.8%</div>
+                                <div class="metric-label">Click Rate</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">18K</div>
+                                <div class="metric-label">Units Sold</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">₹72L</div>
+                                <div class="metric-label">Revenue Generated</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campaign 4 -->
+                <div class="campaign-card">
+                    <div class="campaign-header">
+                        <h3>SaaS B2B Lead Generation Campaign</h3>
+                        <p style="color: var(--color-text-secondary); font-size: 0.85rem; margin: 0;">Target: SME Business Owners & Decision Makers</p>
+                    </div>
+                    <div class="campaign-body">
+                        <p><strong>Campaign Goal:</strong> Generate qualified leads for enterprise software solution targeting SMEs.</p>
+                        <p><strong>Strategy:</strong> LinkedIn advertising to decision makers, Google Search ads targeting business management software keywords, webinar promotions, email nurture sequences, and content marketing focused on ROI and efficiency gains.</p>
+                        <div class="campaign-metrics">
+                            <div class="metric">
+                                <div class="metric-value">156</div>
+                                <div class="metric-label">Qualified Leads</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">12.5%</div>
+                                <div class="metric-label">Lead Quality Rate</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">28</div>
+                                <div class="metric-label">Demo Bookings</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">₹1.2Cr</div>
+                                <div class="metric-label">Pipeline Value</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certificates">
+        <div class="container">
+            <h2>Professional Certifications</h2>
+            <div class="certs-grid">
+                <div class="cert-card" onclick="openModal('valuation-modal')" style="cursor: pointer;">
+                    <h4>Company Valuation</h4>
+                    <p style="margin: 0.5rem 0;">DCF, DDM, Relative Valuation</p>
+                    <p style="font-size: 0.85rem; color: var(--color-text-secondary);">EquityLevers | Score: 85.3% | May 2024</p>
+                    <p style="font-size: 0.8rem; color: var(--color-primary); margin-top: 0.5rem;">📄 View Certificate</p>
+                </div>
+                <div class="cert-card" onclick="openModal('ga4-modal')" style="cursor: pointer;">
+                    <h4>Google Analytics 4</h4>
+                    <p style="margin: 0.5rem 0;">GA4 Essential Training</p>
+                    <p style="font-size: 0.85rem; color: var(--color-text-secondary);">Google | Completed</p>
+                    <p style="font-size: 0.8rem; color: var(--color-primary); margin-top: 0.5rem;">📄 View Certificate</p>
+                </div>
+                <div class="cert-card" onclick="openModal('b2b-modal')" style="cursor: pointer;">
+                    <h4>B2B Social Media Marketing</h4>
+                    <p style="margin: 0.5rem 0;">Foundations Course</p>
+                    <p style="font-size: 0.85rem; color: var(--color-text-secondary);">LinkedIn Learning | Completed</p>
+                    <p style="font-size: 0.8rem; color: var(--color-primary); margin-top: 0.5rem;">📄 View Certificate</p>
+                </div>
+                <div class="cert-card" onclick="openModal('roi-modal')" style="cursor: pointer;">
+                    <h4>Social Media Marketing ROI</h4>
+                    <p style="margin: 0.5rem 0;">Campaign Strategy & Metrics</p>
+                    <p style="font-size: 0.85rem; color: var(--color-text-secondary);">LinkedIn Learning | Completed</p>
+                    <p style="font-size: 0.8rem; color: var(--color-primary); margin-top: 0.5rem;">📄 View Certificate</p>
+                </div>
+                <div class="cert-card" onclick="openModal('digital-modal')" style="cursor: pointer;">
+                    <h4>Digital Marketing Strategies</h4>
+                    <p style="margin: 0.5rem 0;">Five Strategies to Drive Conversions</p>
+                    <p style="font-size: 0.85rem; color: var(--color-text-secondary);">LinkedIn Learning | Completed</p>
+                    <p style="font-size: 0.8rem; color: var(--color-primary); margin-top: 0.5rem;">📄 View Certificate</p>
+                </div>
+                <div class="cert-card" onclick="openModal('tally-modal')" style="cursor: pointer;">
+                    <h4>Tally Essential</h4>
+                    <p style="margin: 0.5rem 0;">Level 1 Accounting Software</p>
+                    <p style="font-size: 0.85rem; color: var(--color-text-secondary);">Tally Solutions | Completed</p>
+                    <p style="font-size: 0.8rem; color: var(--color-primary); margin-top: 0.5rem;">📄 View Certificate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p style="color: var(--color-text-secondary); margin-bottom: 2rem;">I'm always interested in hearing about new projects and opportunities. Feel free to reach out!</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+                    <a href="mailto:munishpakshirajan@gmail.com" class="btn btn-primary">Send Me an Email</a>
+                    <a href="https://www.linkedin.com/in/munish-pakshirajan" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+                    <a href="#" onclick="downloadResume(event)" class="btn btn-primary" style="background: var(--color-secondary); margin-top: 0.5rem;">Download Resume</a>
+                </div>
+
+                <div style="margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div style="padding: 1.5rem; background: var(--color-surface); border-radius: 8px; border: 1px solid var(--color-border);">
+                        <strong style="color: var(--color-primary);">Email</strong>
+                        <p style="color: var(--color-text-secondary); margin: 0.5rem 0; font-size: 0.9rem;">munishpakshirajan@gmail.com</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: var(--color-surface); border-radius: 8px; border: 1px solid var(--color-border);">
+                        <strong style="color: var(--color-primary);">Location</strong>
+                        <p style="color: var(--color-text-secondary); margin: 0.5rem 0; font-size: 0.9rem;">Chennai, TN 600101</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Munish Pakshirajan. All rights reserved. | Crafted with attention to detail and strategic thinking.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            <a href="https://www.linkedin.com/in/munish-pakshirajan" target="_blank">LinkedIn</a> •
+            <a href="mailto:munishpakshirajan@gmail.com">Email</a>
+        </p>
+    </footer>
+
+    <script>
+        // File data embedded as base64
+        const fileData = {
+            'reliance-modal': {
+                title: 'Reliance Industries Financial Model',
+                description: 'Comprehensive 3-statement financial model with advanced analytics and projections for Reliance Industries Limited.',
+                filename: 'Reliance-Financial-model-Munish.xlsx',
+                content: 'This project includes detailed analysis with dashboard, assumptions, 3-statement model, ratio analysis, scenario planning, and sensitivity analysis.',
+                icon: '📊'
+            },
+            'anand-modal': {
+                title: 'Anand Agency - Term Loan Projection',
+                description: 'Financial feasibility analysis and loan projection for Anand Agency with detailed cash flow forecasts.',
+                filename: 'Projections-Term-Loan-Anand-Agency.xlsx',
+                content: 'Complete term loan projection including amortization tables, monthly EMI calculations, and debt servicing capability assessment.',
+                icon: '💼'
+            },
+            'redington-modal': {
+                title: 'Redington Ltd Financial Analysis',
+                description: 'Detailed balance sheet reconciliation and financial audit project for Redington India.',
+                filename: 'Redington Financial Analysis',
+                content: 'Comprehensive financial analysis covering car loan documentation, balance sheet discrepancy analysis, and SAP system integration.',
+                icon: '📈'
+            },
+            'valuation-modal': {
+                title: 'Company Valuation Certification',
+                description: 'Professional certification in company valuation methodologies.',
+                filename: 'munish-equity-levers.pdf',
+                content: 'Certified in DCF (Discounted Cash Flow), DDM (Dividend Discount Model), and Relative Valuation methods with 85.3% aggregate score from EquityLevers.',
+                icon: '🏆',
+                issuer: 'EquityLevers'
+            },
+            'ga4-modal': {
+                title: 'Google Analytics 4 Essential Training',
+                description: 'Professional certification in Google Analytics 4 tools and techniques.',
+                filename: 'CertificateOfCompletion_Google-Analytics-4-GA4-Essential-Training.pdf',
+                content: 'Comprehensive training in GA4 analytics, event tracking, and data-driven decision making.',
+                icon: '📊',
+                issuer: 'Google'
+            },
+            'b2b-modal': {
+                title: 'B2B Foundations: Social Media Marketing',
+                description: 'LinkedIn Learning certification in B2B social media marketing strategies.',
+                filename: 'CertificateOfCompletion_B2B-Foundations-Social-Media-Marketing.pdf',
+                content: 'In-depth training on B2B social media marketing fundamentals, platform strategies, and audience engagement.',
+                icon: '💡',
+                issuer: 'LinkedIn Learning'
+            },
+            'roi-modal': {
+                title: 'Social Media Marketing ROI',
+                description: 'Certification in measuring and optimizing social media marketing ROI.',
+                filename: 'CertificateOfCompletion_Social-Media-Marketing-ROI.pdf',
+                content: 'Expert training on campaign metrics, ROI calculation, and performance optimization for social media campaigns.',
+                icon: '📈',
+                issuer: 'LinkedIn Learning'
+            },
+            'digital-modal': {
+                title: 'Five Digital Marketing Strategies to Drive Conversions',
+                description: 'Advanced digital marketing strategies certification.',
+                filename: 'CertificateOfCompletion_Five-Digital-Marketing-Strategies-to-Drive-Conversions.pdf',
+                content: 'Professional training on conversion-focused digital marketing strategies, customer journey optimization, and performance marketing.',
+                icon: '🎯',
+                issuer: 'LinkedIn Learning'
+            },
+            'tally-modal': {
+                title: 'Tally Essential - Level 1',
+                description: 'Professional certification in Tally accounting software.',
+                filename: 'Tally Certificate',
+                content: 'Comprehensive training in Tally accounting software fundamentals and practical application.',
+                icon: '💳',
+                issuer: 'Tally Solutions'
+            }
+        };
+
+        function openModal(modalId) {
+            const data = fileData[modalId];
+            if (!data) return;
+
+            const modalContent = document.querySelector('#' + modalId + ' .modal-content') || createModal(modalId);
+            
+            let content = `
+                <span class="close" onclick="closeModal('${modalId}')">&times;</span>
+                <h3 class="modal-title">${data.icon} ${data.title}</h3>
+                <div class="modal-body">
+                    <p><strong>Description:</strong></p>
+                    <p>${data.description}</p>
+                    <p style="margin-top: 1.5rem;"><strong>Details:</strong></p>
+                    <p>${data.content}</p>
+            `;
+
+            if (data.issuer) {
+                content += `<p style="margin-top: 1rem;"><strong>Issued By:</strong> ${data.issuer}</p>`;
+            }
+
+            content += `
+                    <p style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); font-size: 0.9rem; color: var(--color-text-secondary);">
+                        📁 <strong>File:</strong> ${data.filename}
+                    </p>
+                </div>
+            `;
+
+            if (!document.querySelector('#' + modalId)) {
+                const modal = document.createElement('div');
+                modal.id = modalId;
+                modal.className = 'modal';
+                modal.innerHTML = `<div class="modal-content">${content}</div>`;
+                document.body.appendChild(modal);
+                modal.style.display = 'block';
+            } else {
+                document.querySelector('#' + modalId + ' .modal-content').innerHTML = content;
+                document.querySelector('#' + modalId).style.display = 'block';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.querySelector('#' + modalId);
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Smooth scrolling and active nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    updateActiveNav();
+                }
+            });
+        });
+
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+
+        // Initial call
+        updateActiveNav();
+
+        // Download Resume Function
+        function downloadResume(e) {
+            e.preventDefault();
+            // Create a simple text-based resume download
+            const resumeContent = `MUNISH PAKSHIRAJAN
+Chennai, TN 600101
+Email: munishpakshirajan@gmail.com
+LinkedIn: linkedin.com/in/munish-pakshirajan
+
+PROFESSIONAL SUMMARY
+Results-driven Finance Analyst and Digital Marketer with expertise in financial modeling, strategic marketing, and business development. Commerce graduate from Shiv Nadar University with proven ability to drive business growth through data-driven insights.
+
+CORE COMPETENCIES
+• Financial Analysis & Modeling (DCF, DDM, Valuation)
+• Digital Marketing & Campaign Strategy
+• Excel Mastery (Advanced formulas, VBA, Macros)
+• Sales & Business Development
+• GA4 Analytics & Performance Marketing
+• Business Strategy & Market Analysis
+• AI Tools & Automation
+• Data-Driven Decision Making
+
+PROFESSIONAL EXPERIENCE
+
+Management Trainee - Reflections, Chennai
+June 2025 - Present
+• Direct customer interaction and lead conversion
+• Sales record maintenance and Excel reporting
+• Social media management and content creation
+• Internal team coordination for service delivery
+
+Finance Intern - Redington Ltd, Chennai
+May 2024 - July 2024
+• Financial documentation and record management
+• Balance sheet analysis and discrepancy reconciliation
+• SAP system integration and data maintenance
+• Accounting software operations (Finalizer)
+
+Project Intern - Anil Sharma A and Associates, Chennai
+February 2022
+• Five-year financial projection modeling
+• Excel macro development and report automation
+• Professional presentation and report development
+
+FEATURED PROJECTS
+• Reliance Industries 3-Statement Financial Model
+• Anand Agency Term Loan Projection & Analysis
+• Multiple Mock Brand Campaigns (Smartphones, Fashion, FMCG, SaaS)
+
+CERTIFICATIONS
+• Company Valuation (EquityLevers) - Score: 85.3%
+• Google Analytics 4 Essential Training
+• B2B Social Media Marketing (LinkedIn Learning)
+• Social Media Marketing ROI (LinkedIn Learning)
+• Digital Marketing Strategies (LinkedIn Learning)
+• Tally Essential Level 1
+
+EDUCATION
+Bachelor of Commerce - Shiv Nadar University
+
+SKILLS & TOOLS
+Technical: Excel, VBA, SAP, Tally, GA4, Python basics
+Business: Financial Modeling, Digital Strategy, Sales, Marketing
+Soft Skills: Problem-solving, Communication, Leadership, Critical Thinking`;
+
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(resumeContent));
+            element.setAttribute('download', 'Munish_Pakshirajan_Resume.txt');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+    </script>
 </body>
 </html>
