@@ -1121,7 +1121,8 @@
     </section>
 
     <!-- Certifications Section -->
-    <section id="certificates">
+
+            <section id="certificates">
         <div class="container">
             <h2>Professional Certifications</h2>
             <div class="certs-grid">
@@ -1165,6 +1166,7 @@
         </div>
     </section>
 
+
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
@@ -1202,28 +1204,23 @@
     </footer>
 
     <script>
-        // File data embedded as base64
+        // File data with certificate and project images embedded as base64
         const fileData = {
             'reliance-modal': {
                 title: 'Reliance Industries Financial Model',
                 description: 'Comprehensive 3-statement financial model with advanced analytics and projections for Reliance Industries Limited.',
                 filename: 'Reliance-Financial-model-Munish.xlsx',
                 content: 'This project includes detailed analysis with dashboard, assumptions, 3-statement model, ratio analysis, scenario planning, and sensitivity analysis.',
-                icon: '📊'
+                icon: '📊',
+                certificateImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=400&fit=crop'
             },
             'anand-modal': {
                 title: 'Anand Agency - Term Loan Projection',
                 description: 'Financial feasibility analysis and loan projection for Anand Agency with detailed cash flow forecasts.',
                 filename: 'Projections-Term-Loan-Anand-Agency.xlsx',
                 content: 'Complete term loan projection including amortization tables, monthly EMI calculations, and debt servicing capability assessment.',
-                icon: '💼'
-            },
-            'redington-modal': {
-                title: 'Redington Ltd Financial Analysis',
-                description: 'Detailed balance sheet reconciliation and financial audit project for Redington India.',
-                filename: 'Redington Financial Analysis',
-                content: 'Comprehensive financial analysis covering car loan documentation, balance sheet discrepancy analysis, and SAP system integration.',
-                icon: '📈'
+                icon: '💼',
+                certificateImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=400&fit=crop'
             },
             'valuation-modal': {
                 title: 'Company Valuation Certification',
@@ -1231,7 +1228,8 @@
                 filename: 'munish-equity-levers.pdf',
                 content: 'Certified in DCF (Discounted Cash Flow), DDM (Dividend Discount Model), and Relative Valuation methods with 85.3% aggregate score from EquityLevers.',
                 icon: '🏆',
-                issuer: 'EquityLevers'
+                issuer: 'EquityLevers',
+                certificateImage: 'https://images.unsplash.com/photo-1589519160732-57fc498494f8?w=500&h=400&fit=crop'
             },
             'ga4-modal': {
                 title: 'Google Analytics 4 Essential Training',
@@ -1239,7 +1237,8 @@
                 filename: 'CertificateOfCompletion_Google-Analytics-4-GA4-Essential-Training.pdf',
                 content: 'Comprehensive training in GA4 analytics, event tracking, and data-driven decision making.',
                 icon: '📊',
-                issuer: 'Google'
+                issuer: 'Google',
+                certificateImage: 'https://images.unsplash.com/photo-1551431009-381d36ac3a99?w=500&h=400&fit=crop'
             },
             'b2b-modal': {
                 title: 'B2B Foundations: Social Media Marketing',
@@ -1247,7 +1246,9 @@
                 filename: 'CertificateOfCompletion_B2B-Foundations-Social-Media-Marketing.pdf',
                 content: 'In-depth training on B2B social media marketing fundamentals, platform strategies, and audience engagement.',
                 icon: '💡',
-                issuer: 'LinkedIn Learning'
+                issuer: 'LinkedIn Learning',
+                link: 'https://1drv.ms/b/c/c569460421423f88/IQCJwD59WH_eS70n2PUCYsP5AcDvoPT4GecI-VDaXGLR26k?e=YkPHyP',
+                certificateImage: 'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=500&h=400&fit=crop'
             },
             'roi-modal': {
                 title: 'Social Media Marketing ROI',
@@ -1255,7 +1256,8 @@
                 filename: 'CertificateOfCompletion_Social-Media-Marketing-ROI.pdf',
                 content: 'Expert training on campaign metrics, ROI calculation, and performance optimization for social media campaigns.',
                 icon: '📈',
-                issuer: 'LinkedIn Learning'
+                issuer: 'LinkedIn Learning',
+                certificateImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=400&fit=crop'
             },
             'digital-modal': {
                 title: 'Five Digital Marketing Strategies to Drive Conversions',
@@ -1263,7 +1265,8 @@
                 filename: 'CertificateOfCompletion_Five-Digital-Marketing-Strategies-to-Drive-Conversions.pdf',
                 content: 'Professional training on conversion-focused digital marketing strategies, customer journey optimization, and performance marketing.',
                 icon: '🎯',
-                issuer: 'LinkedIn Learning'
+                issuer: 'LinkedIn Learning',
+                certificateImage: 'https://images.unsplash.com/photo-1460925895917-adf4e565db18?w=500&h=400&fit=crop'
             },
             'tally-modal': {
                 title: 'Tally Essential - Level 1',
@@ -1271,7 +1274,8 @@
                 filename: 'Tally Certificate',
                 content: 'Comprehensive training in Tally accounting software fundamentals and practical application.',
                 icon: '💳',
-                issuer: 'Tally Solutions'
+                issuer: 'Tally Solutions',
+                certificateImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=400&fit=crop'
             }
         };
 
